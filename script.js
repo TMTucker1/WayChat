@@ -5,6 +5,9 @@ const chatbotMessages = document.getElementById('chatbotMessages');
 const chatbotInput = document.getElementById('chatbotInput');
 const chatbotSendBtn = document.getElementById('chatbotSendBtn');
 
+// Array to store conversation history
+let conversationHistory = [];
+
 if (chatbotToggleBtn && chatbotPanel) {
   // Toggle chat open/closed when clicking the button
   chatbotToggleBtn.addEventListener('click', () => {
@@ -36,6 +39,12 @@ function addMessage(message, isUser = false) {
 // Function to send message to OpenAI API
 async function sendMessageToOpenAI(userMessage) {
   try {
+    // Add user message to conversation history
+    conversationHistory.push({
+      role: 'user',
+      content: userMessage
+    });
+    
     // Show that the assistant is typing
     addMessage('Thinking...', false);
     
@@ -48,12 +57,7 @@ async function sendMessageToOpenAI(userMessage) {
       },
       body: JSON.stringify({
         model: 'gpt-4o', // Using gpt-4o model as specified
-        messages: [
-          {
-            role: 'user',
-            content: userMessage
-          }
-        ]
+        messages: conversationHistory // Send entire conversation history
       })
     });
 
@@ -73,6 +77,12 @@ async function sendMessageToOpenAI(userMessage) {
     
     // Get the assistant's reply
     const assistantReply = data.choices[0].message.content;
+    
+    // Add assistant's reply to conversation history
+    conversationHistory.push({
+      role: 'assistant',
+      content: assistantReply
+    });
     
     // Display the assistant's reply in the chat window
     addMessage(assistantReply, false);
