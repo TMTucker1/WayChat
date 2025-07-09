@@ -316,6 +316,37 @@ h1 {
   margin-bottom: 8px;
 }
 
+/* Chat message styles */
+.user-message, .assistant-message {
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 15px;
+  max-width: 80%;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.user-message {
+  background-color: #4F46E5;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+.assistant-message {
+  background-color: #F3F4F6;
+  color: #1F2937;
+  margin-right: auto;
+  text-align: left;
+}
+
+.chatbot-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 10px 0;
+}
+
 /* Make sure the Material Icons font is used and sized correctly */
 .material-icons-outlined.chatbot-icon {
   font-family: 'Material Icons Outlined', 'Material Icons', Arial, sans-serif !important;
