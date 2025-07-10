@@ -84,7 +84,9 @@ async function sendMessageToOpenAI(userMessage) {
       },
       body: JSON.stringify({
         model: 'gpt-4o', // Using gpt-4o model as specified
-        messages: conversationHistory // Send entire conversation history
+        messages: conversationHistory, // Send entire conversation history
+        temperature: 0.8, // Make the assistant more creative
+        max_completion_tokens: 300 // Keep responses short and focused
       })
     });
 
