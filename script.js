@@ -21,7 +21,9 @@ If the user's input is unclear, ask 1–2 short questions to help sharpen the di
 
 Only respond to questions related to Waymark, its tools, its platform, or the creative process of making short-form video ads. If a question is unrelated, politely explain that you're focused on helping users create video ads with Waymark.
 
-Keep your replies short and concise, collaborative, and focused on helping users express their message clearly. Always align with modern marketing best practices — and stay supportive and friendly.`
+Keep your replies short and concise, collaborative, and focused on helping users express their message clearly. Always align with modern marketing best practices — and stay supportive and friendly.
+
+Format your responses with clear sections separated by line breaks. Use **bold** for section headers and *italics* for emphasis. Structure your suggestions clearly with proper spacing between different elements like script, tone, and CTA.`
   }
 ];
 
@@ -46,7 +48,15 @@ if (chatbotToggleBtn && chatbotPanel) {
 function addMessage(message, isUser = false) {
   const messageElement = document.createElement('div');
   messageElement.className = isUser ? 'user-message' : 'assistant-message';
-  messageElement.textContent = message;
+  
+  // Format the message with proper line breaks and spacing
+  const formattedMessage = message
+    .replace(/\n\n/g, '<br><br>')  // Double line breaks for paragraphs
+    .replace(/\n/g, '<br>')        // Single line breaks
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold text
+    .replace(/\*(.*?)\*/g, '<em>$1</em>');             // Italic text
+  
+  messageElement.innerHTML = formattedMessage;
   chatbotMessages.appendChild(messageElement);
   
   // Scroll to the bottom of the chat

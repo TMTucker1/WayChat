@@ -340,6 +340,26 @@ h1 {
   text-align: left;
 }
 
+/* Enhanced chat message styles for better formatting */
+.assistant-message strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+.assistant-message em {
+  font-style: italic;
+  color: #4B5563;
+}
+
+.assistant-message br {
+  margin: 4px 0;
+}
+
+/* Add spacing between sections in assistant responses */
+.assistant-message p {
+  margin: 8px 0;
+}
+
 .chatbot-messages {
   max-height: 300px;
   overflow-y: auto;
