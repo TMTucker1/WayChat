@@ -212,6 +212,7 @@ h1 {
   right: 24px;
   width: 380px;
   max-width: 95vw;
+  max-height: 75vh; /* Allow panel to expand up to 75% of viewport height */
   background: linear-gradient(145deg, #2a2a36, #323242);
   color: #fff;
   border-radius: 16px;
@@ -310,10 +311,11 @@ h1 {
   border-radius: 8px;
   padding: 10px;
   min-height: 60px;
-  max-height: 180px;
+  max-height: calc(75vh - 180px); /* Dynamically adjust based on panel height */
   overflow-y: auto;
   font-size: 15px;
   margin-bottom: 8px;
+  flex-grow: 1; /* Allow messages area to expand */
 }
 
 /* Chat message styles */
@@ -361,10 +363,11 @@ h1 {
 }
 
 .chatbot-messages {
-  max-height: 300px;
+  max-height: calc(75vh - 180px); /* Dynamically adjust based on panel height */
   overflow-y: auto;
   margin-bottom: 15px;
   padding: 10px 0;
+  flex-grow: 1; /* Allow messages area to expand */
 }
 
 /* Make sure the Material Icons font is used and sized correctly */
@@ -461,5 +464,6 @@ h1 {
     min-width: 0;
     padding: 12px 4vw 12px 4vw;
     bottom: 60px;
+    max-height: 75vh; /* Maintain 75% viewport height on mobile */
   }
 }
